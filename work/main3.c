@@ -9,13 +9,16 @@
 #define READ "rb" 
 #define WRITE "wb"
 
-int main()
+int main(int argc, char* argv[])
 {
 	int count = 0;
 	int countUnique = 0;
 	SYM_t *syms = (SYM_t*)calloc(SIZE, sizeof(SYM_t));
 	FILE *fp;
-	fp = fopen("left.txt", READ);
+	if (argc > 1)
+		fp = fopen(argv[1], READ);
+	else
+		fp = fopen("left.txt", READ);
 	if (!fp)
 	{
 		perror("File:");
